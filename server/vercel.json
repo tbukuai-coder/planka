@@ -1,33 +1,16 @@
 {
   "version": 2,
+  "name": "planka-server",
   "builds": [
     {
-      "src": "app.js",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": [
-          "api/**",
-          "config/**",
-          "db/**",
-          "node_modules/**"
-        ]
-      }
+      "src": "server/package.json",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/socket.io/(.*)",
-      "dest": "/app.js"
-    },
-    {
       "src": "/(.*)",
-      "dest": "/app.js"
+      "dest": "/server/app.js"
     }
-  ],
-  "functions": {
-    "app.js": {
-      "maxDuration": 60,
-      "memory": 1024
-    }
-  }
+  ]
 }
